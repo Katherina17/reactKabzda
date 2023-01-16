@@ -4,6 +4,7 @@ import {Rating, RatingValuePropsType, valueType} from "./components/Rating/Ratin
 import Accordion from "./components/Accordion/Accordion";
 import {OnOff} from "./components/OnOff/OnOf";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/OnOf";
+import {UncontrolledInputs} from "./components/UncontolledInputs/UncontrolledInputs";
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 
     return (
         <div className='App'>
-            <Rating value={ratingValue} setRatingValue={setRatingValue}/>
+           {/* <Rating value={ratingValue} setRatingValue={setRatingValue}/>
             <Accordion title={"Users"}
                        collapsed={collapsedValue}
                        setCollapsedValue={setCollapsedValue}/>
@@ -21,7 +22,8 @@ function App() {
                        collapsed={collapsedValue}
                        setCollapsedValue={setCollapsedValue}/>
             <UncontrolledOnOff light={light}
-                               setLight={setLight}/>
+                               setLight={setLight}/>*/}
+            <UncontrolledInputs/>
         </div>
     );
 }
