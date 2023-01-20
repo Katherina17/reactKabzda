@@ -1,8 +1,14 @@
+type AccordionBody = {
+    id: number;
+    value: string;
+}
 
  type AccordionType = {
     title: string;
     collapsed: boolean;
     setCollapsedValue: (val: boolean) => void;
+    items: AccordionBody[];
+    callBack: (value: string) => void;
  }
 
  type AccordionTitleProps = {
@@ -13,6 +19,8 @@
 
  type AccordionBodyProps = {
     collapsed: boolean;
+    items: AccordionBody[];
+    callBack: (value: string) => void;
  }
 
 function Accordion(props: AccordionType){
@@ -21,7 +29,7 @@ function Accordion(props: AccordionType){
             title={props.title}
             onClick={props.setCollapsedValue}
             collapsed={props.collapsed}/>
-        <AccordionBody collapsed={props.collapsed}/>
+        <AccordionBody collapsed={props.collapsed} items={props.items} callBack={props.callBack}/>
     </div>
 }
 
@@ -33,15 +41,20 @@ function  AccordionTitle (props: AccordionTitleProps){
 
 function AccordionBody(props: AccordionBodyProps) {
     const collapsed = props.collapsed;
+    const mappedValues = props.items.map(el => {
+        const onClickHandler = () => {
+            props.callBack(el.value)
+        }
+        return (
+            <li key={el.id} onClick={onClickHandler}>{el.value}</li>
+        )
+    })
     return (
         <>
             {
                 collapsed &&
                 (<ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
+                    {mappedValues}
                 </ul>)
             } {
             !collapsed &&
