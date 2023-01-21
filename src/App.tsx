@@ -5,6 +5,7 @@ import Accordion from "./components/Accordion/Accordion";
 import {OnOff} from "./components/OnOff/OnOf";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/OnOf";
 import {UncontrolledInputs} from "./components/UncontolledInputs/UncontrolledInputs";
+import {Select, SelectType} from "./components/Select/Select";
 
 const usersValues = [
     {id: 1, value: 'Stas'},
@@ -22,10 +23,21 @@ const adminValues = [
     {id: 10, value: 'Vasily'},
 ]
 
+
+const selectData: SelectType[] = [
+    {id: 6, value: '1', title: 'none'},
+    {id: 7, value: '2', title: 'JS'},
+    {id: 8, value: '3', title: 'CSS'},
+    {id: 9, value: '4', title: 'HTML'},
+
+]
+
 function App() {
     const[ratingValue, setRatingValue] = useState<valueType>(0);
     const[collapsedValue, setCollapsedValue] = useState(false);
     const [light, setLight] = useState<boolean>(false);
+    const [selectValue, setSelectValue] = useState('1');
+
 
     const onClickHandler = (value: string) => {
         console.log(`Hello, ${value}, have a good day!`)
@@ -37,13 +49,11 @@ function App() {
             <Accordion title={"Users"}
                        collapsed={collapsedValue}
                        setCollapsedValue={setCollapsedValue}/>
-            <Accordion title={'Admin'}
-                       collapsed={collapsedValue}
-                       setCollapsedValue={setCollapsedValue}/>
+
             <UncontrolledOnOff light={light}
                                setLight={setLight}/>*/}
            {/* <UncontrolledInputs/>*/}
-            <Accordion title={"Users"}
+            {/*<Accordion title={"Users"}
                        collapsed={collapsedValue}
                        items={usersValues}
                        setCollapsedValue={setCollapsedValue}
@@ -52,7 +62,11 @@ function App() {
                        collapsed={collapsedValue}
                        items={adminValues}
                        setCollapsedValue={setCollapsedValue}
-                       callBack={(value) => onClickHandler(value)}/>
+                       callBack={(value) => onClickHandler(value)}/>*/}
+
+            <Select selectData={selectData}
+                    setSelectValue={setSelectValue}
+                    value={selectValue}/>
         </div>
     );
 }
