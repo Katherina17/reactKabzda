@@ -1,5 +1,5 @@
 import s from './Select.module.css';
-import {useState} from "react";
+import {useState, KeyboardEvent} from "react";
 
 export type SelectType = {
     id: number;
@@ -13,11 +13,25 @@ type SelectPropsType = {
     setSelectValue: (value: string) => void;
 }
 
-
-
 export const Select = (props: SelectPropsType) => {
     let currValue = props.selectData.find(el => el.value === props.value);
     const [isSelectedValue, setIsSelectedValue] = useState(false);
+    const onKeyUpHandler = (e: KeyboardEvent<HTMLDivElement>) => {
+        for(let i = 0; i < props.selectData.length; i++){
+            if(e.keyCode === 40 && (currValue && currValue.value) === props.selectData[i].value){
+                if(i === props.selectData.length - 1) break
+                props.setSelectValue(props.selectData[i+1].value)
+                break;
+            } else if(e.keyCode === 38 && (currValue && currValue.value) === props.selectData[i].value){
+                if(i === 0) break;
+                props.setSelectValue(props.selectData[i-1].value)
+                break;
+            }
+            if(e.code === 'Enter'){
+                setIsSelectedValue(false)
+            }
+        }
+    }
     const onClickHandler = () => {
         setIsSelectedValue(!isSelectedValue)
     }
@@ -26,8 +40,9 @@ export const Select = (props: SelectPropsType) => {
     }
     return (
         <>
-            <div className={isSelectedValue ? `${s.selectActive}` : s.select} onClick={onClickHandler}>
+            <div className={isSelectedValue ? `${s.selectActive}` : s.select} onClick={onClickHandler} onKeyUp={onKeyUpHandler} tabIndex={0}>
                 <span>{currValue && currValue.title}</span>
+                    <div className={ isSelectedValue ? s.arrowActive : s.arrow}></div>
             </div>
             <div>
                 {isSelectedValue && <ModalSelectValues selectData={props.selectData}
@@ -58,7 +73,10 @@ const ModalSelectValues = (props: ModalSelectValues) => {
         <div className={s.modalSelectValues}>
             {props.selectData.map(el => {
                     return (
-                        <div className={props.selectedValue === el.value ? s.targetItem : ''} key={el.id} onClick={() => addCallBacks(el.value)}>{el.title}</div>
+                        <div className={props.selectedValue === el.value ? s.targetItem : ''}
+                             key={el.id}
+                             onClick={() => addCallBacks(el.value)}
+                        >{el.title}</div>
                     )
                 }
             )

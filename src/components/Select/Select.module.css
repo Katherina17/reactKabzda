@@ -3,11 +3,9 @@
     height: 3rem;
     border: 2px solid black;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     color: #000000a3;
-
 }
 
 .selectActive{
@@ -15,10 +13,13 @@
     height: 3rem;
     border: 2px solid rgb(25, 118, 210);
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     color: black;
+}
+.selectActive:focus{
+    border: 2px solid rgb(25, 118, 210);
+    outline: none;
 }
 
 .modalSelectValues{
@@ -35,7 +36,18 @@
     position: absolute;
 }
 
-.selectActive::after{
+.arrow{
+    border: 5px solid transparent;
+    border-bottom: 9px solid black;
+}
+
+.arrowActive{
+    border: 5px solid transparent;
+    border-top: 9px solid rgb(25, 118, 210);
+}
+
+
+/*.selectActive::after{
     content: '';
     border: 5px solid transparent;
     border-top: 9px solid rgb(25, 118, 210);
@@ -49,12 +61,19 @@
     border-bottom: 9px solid black;
     position: absolute;
     left: 47.7rem;
-}
+}*/
 
 
 
 .modalSelectValues div:hover{
   background: rgba(25, 118, 210, 0.12);
+    width: 118px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.modalSelectValues div{
     width: 118px;
     cursor: pointer;
     display: inline-block;
