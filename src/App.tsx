@@ -6,6 +6,7 @@ import {OnOff} from "./components/OnOff/OnOf";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/OnOf";
 import {UncontrolledInputs} from "./components/UncontolledInputs/UncontrolledInputs";
 import {Select, SelectType} from "./components/Select/Select";
+import {UnctrolledAccordion} from "./components/UnconrolledAccordion/UncontrolledAccordion";
 
 const usersValues = [
     {id: 1, value: 'Stas'},
@@ -64,9 +65,10 @@ function App() {
                        setCollapsedValue={setCollapsedValue}
                        callBack={(value) => onClickHandler(value)}/>*/}
 
-            <Select selectData={selectData}
+           {/* <Select selectData={selectData}
                     setSelectValue={setSelectValue}
-                    value={selectValue}/>
+                    value={selectValue}/>*/}
+            <UnctrolledAccordion title={'users'}/>
         </div>
     );
 }
