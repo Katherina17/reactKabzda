@@ -5,7 +5,7 @@ type OnOffPropsType = {
     setLight: (val: boolean) => void;
 }
 
-export const UncontrolledOnOff: React.FC<OnOffPropsType> = (props) => {
+export const UncontrolledOnOffSecret: React.FC<OnOffPropsType> = (props) => {
     const{light, setLight} = props;
   
     const onStyle = {

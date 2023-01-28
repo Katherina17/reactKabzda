@@ -1,4 +1,4 @@
-import {useReducer} from 'react';
+import React, {useReducer} from 'react';
 import {
     uncontrolledAccordionAC,
     uncontrolledAccordionAction,
@@ -20,7 +20,7 @@ import {
     collapsed: boolean;
  }
 
-export function UnctrolledAccordion(props: AccordionType){
+export function UnctrolledAccordionSecret(props: AccordionType){
     const[collapsed, dispatch] = useReducer(uncontrolledAccordionReducer, {collapsed: false});
     console.log(collapsed.collapsed)
     return <div>
@@ -31,14 +31,14 @@ export function UnctrolledAccordion(props: AccordionType){
     </div>
 }
 
-function  AccordionTitle (props: AccordionTitleProps){
+function  AccordionTitleSecret (props: AccordionTitleProps){
     return (
         <>
             <h3 onClick={() => props.dispatch(uncontrolledAccordionAC())}> {props.title}</h3>
         </>
     )
 }
-function AccordionBody(props: AccordionBodyProps) {
+function AccordionBodySecret(props: AccordionBodyProps) {
     return (
         <>
             {
@@ -56,5 +56,8 @@ function AccordionBody(props: AccordionBodyProps) {
         </>
     )
 }
+
+const AccordionTitle = React.memo(AccordionTitleSecret);
+const AccordionBody= React.memo(AccordionBodySecret);
 
 

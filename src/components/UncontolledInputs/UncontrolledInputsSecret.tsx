@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from "react";
 
 
-export const  UncontrolledInputs = () => {
+export const  UncontrolledInputsSecret = () => {
     return(
         <div style={{display:'flex', flexDirection: 'column'}}>
             <UnControlledInput/>
@@ -15,13 +15,15 @@ export const  UncontrolledInputs = () => {
     )
 }
 
-const UnControlledInput = () => {
+const UnControlledInputSecret = () => {
     return(
         <input/>
     )
 }
 
-const TrackValueOfUnControlledInput = () => {
+const UnControlledInput = React.memo(UnControlledInputSecret)
+
+const TrackValueOfUnControlledInputSecret = () => {
     const [value, setValue] = useState('');
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.value)
@@ -33,7 +35,10 @@ const TrackValueOfUnControlledInput = () => {
     )
 }
 
-const GetValueFromUncontrolledInputByButton = () => {
+const TrackValueOfUnControlledInput = React.memo(TrackValueOfUnControlledInputSecret)
+
+
+const GetValueFromUncontrolledInputByButtonSecret = () => {
     const[value, setValue] = useState('');
     let inputValue = React.useRef<HTMLInputElement>(null);
     const save = () => {
@@ -48,13 +53,18 @@ const GetValueFromUncontrolledInputByButton = () => {
     )
 }
 
-const UnControlledInputWithFixedValue = () => {
+const GetValueFromUncontrolledInputByButton = React.memo(GetValueFromUncontrolledInputByButtonSecret)
+
+
+const UnControlledInputWithFixedValueSecret = () => {
     return(
         <input value={'i\'am a fixed value'}/>
     )
 }
 
-const ControlledInput = () => {
+const UnControlledInputWithFixedValue = React.memo(UnControlledInputWithFixedValueSecret)
+
+const ControlledInputSecret = () => {
     const [value, setValue] = useState('');
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.value)
@@ -66,7 +76,10 @@ const ControlledInput = () => {
     )
 }
 
-const ControlledCheckBox = () => {
+const ControlledInput = React.memo(ControlledInputSecret)
+
+
+const ControlledCheckBoxSecret = () => {
     const [value, setValue] = useState(false);
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.checked)
@@ -77,8 +90,11 @@ const ControlledCheckBox = () => {
     )
 }
 
+const ControlledCheckBox  = React.memo(ControlledCheckBoxSecret)
 
-const ControlledSelect = () => {
+
+
+const ControlledSelectSecret = () => {
     const [value, setValue] = useState<string | undefined>(undefined);
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.value)
@@ -92,3 +108,5 @@ const ControlledSelect = () => {
         </>
     )
 }
+
+const ControlledSelect  = React.memo(ControlledSelectSecret)

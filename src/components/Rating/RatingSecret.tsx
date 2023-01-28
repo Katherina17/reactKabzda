@@ -12,7 +12,7 @@ export type RatingValuePropsType = {
     setRatingValue: (value: valueType) => void;
 }
 
-export const Rating = (props: RatingValuePropsType) => {
+export const RatingSecret = (props: RatingValuePropsType) => {
     return(
         <div>
            <Star selected={props.value > 0} onClick={ props.setRatingValue} value={1}/>

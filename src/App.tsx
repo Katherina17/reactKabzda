@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
-import {Rating, RatingValuePropsType, valueType} from "./components/Rating/Rating";
-import Accordion from "./components/Accordion/Accordion";
+import {RatingSecret, RatingValuePropsType, valueType} from "./components/Rating/RatingSecret";
 import {OnOff} from "./components/OnOff/OnOf";
-import {UncontrolledOnOff} from "./components/UncontrolledOnOff/OnOf";
-import {UncontrolledInputs} from "./components/UncontolledInputs/UncontrolledInputs";
-import {Select, SelectType} from "./components/Select/Select";
-import {UnctrolledAccordion} from "./components/UnconrolledAccordion/UncontrolledAccordion";
+import {UncontrolledOnOffSecret} from "./components/UncontrolledOnOff/OnOf";
+import {UncontrolledInputsSecret} from "./components/UncontolledInputs/UncontrolledInputsSecret";
+import {SelectSecret, SelectType} from "./components/Select/SelectSecret";
+import {UnctrolledAccordionSecret} from "./components/UnconrolledAccordion/UncontrolledAccordion";
+import {Example1} from "./components/ReactMemo/ReactMemo";
+import AccordionSecret from "./components/Accordion/Accordion";
 
 const usersValues = [
     {id: 1, value: 'Stas'},
@@ -46,15 +47,12 @@ function App() {
 
     return (
         <div className='App'>
-           {/* <Rating value={ratingValue} setRatingValue={setRatingValue}/>
-            <Accordion title={"Users"}
-                       collapsed={collapsedValue}
-                       setCollapsedValue={setCollapsedValue}/>
+            <Rating value={ratingValue} setRatingValue={setRatingValue}/>
 
             <UncontrolledOnOff light={light}
-                               setLight={setLight}/>*/}
-           {/* <UncontrolledInputs/>*/}
-            {/*<Accordion title={"Users"}
+                                     setLight={setLight}/>
+            <UncontrolledInputs/>
+            <Accordion title={"Users"}
                        collapsed={collapsedValue}
                        items={usersValues}
                        setCollapsedValue={setCollapsedValue}
@@ -63,14 +61,23 @@ function App() {
                        collapsed={collapsedValue}
                        items={adminValues}
                        setCollapsedValue={setCollapsedValue}
-                       callBack={(value) => onClickHandler(value)}/>*/}
+                       callBack={(value) => onClickHandler(value)}/>
 
-           {/* <Select selectData={selectData}
+            <Select selectData={selectData}
                     setSelectValue={setSelectValue}
-                    value={selectValue}/>*/}
-            <UnctrolledAccordion title={'users'}/>
+                    value={selectValue}/>
+            <UncontrolledAccordion title={'users'}/>
+            <Example1/>
         </div>
     );
 }
+
+const Accordion = React.memo(AccordionSecret)
+const Rating = React.memo(RatingSecret)
+const Select = React.memo(SelectSecret)
+const UncontrolledAccordion= React.memo(UnctrolledAccordionSecret)
+const UncontrolledInputs= React.memo(UncontrolledInputsSecret)
+const UncontrolledOnOff= React.memo(UncontrolledOnOffSecret)
+
 
 export default App;

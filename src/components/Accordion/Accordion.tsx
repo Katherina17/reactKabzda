@@ -1,3 +1,5 @@
+import React from "react";
+
 type AccordionBody = {
     id: number;
     value: string;
@@ -23,7 +25,7 @@ type AccordionBody = {
     callBack: (value: string) => void;
  }
 
-function Accordion(props: AccordionType){
+function AccordionSecret(props: AccordionType){
     return <div>
         <AccordionTitle
             title={props.title}
@@ -33,13 +35,13 @@ function Accordion(props: AccordionType){
     </div>
 }
 
-function  AccordionTitle (props: AccordionTitleProps){
+function  AccordionTitleSecret (props: AccordionTitleProps){
     return (
         <h3 onClick={() => props.onClick(!props.collapsed)}> {props.title}</h3>
     )
 }
 
-function AccordionBody(props: AccordionBodyProps) {
+function AccordionBodySecret(props: AccordionBodyProps) {
     const collapsed = props.collapsed;
     const mappedValues = props.items.map(el => {
         const onClickHandler = () => {
@@ -65,9 +67,7 @@ function AccordionBody(props: AccordionBodyProps) {
     )
 }
 
+const AccordionTitle = React.memo(AccordionTitleSecret);
+const AccordionBody = React.memo(AccordionBodySecret);
 
-
-
-
-
-export default Accordion;
+export default AccordionSecret;

@@ -1,5 +1,5 @@
 import s from './Select.module.css';
-import {useState, KeyboardEvent} from "react";
+import React, {useState, KeyboardEvent} from "react";
 
 export type SelectType = {
     id: number;
@@ -13,7 +13,7 @@ type SelectPropsType = {
     setSelectValue: (value: string) => void;
 }
 
-export const Select = (props: SelectPropsType) => {
+export const SelectSecret = (props: SelectPropsType) => {
     let currValue = props.selectData.find(el => el.value === props.value);
     const [isSelectedValue, setIsSelectedValue] = useState(false);
     const onKeyUpHandler = (e: KeyboardEvent<HTMLDivElement>) => {
@@ -64,7 +64,7 @@ type ModalSelectValues = {
     setIsSelectedValue: (val: boolean) => void
 }
 
-const ModalSelectValues = (props: ModalSelectValues) => {
+const ModalSelectValuesSecret = (props: ModalSelectValues) => {
     const addCallBacks = (value: string) => {
         props.callBack(value);
         props.setIsSelectedValue(!props.isSelectedValue)
@@ -84,3 +84,5 @@ const ModalSelectValues = (props: ModalSelectValues) => {
         </div>
     )
 }
+
+const ModalSelectValues = React.memo(ModalSelectValuesSecret)
