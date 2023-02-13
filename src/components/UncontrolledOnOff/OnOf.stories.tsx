@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {UncontrolledOnOffSecret} from "./OnOf";
+import {action} from "@storybook/addon-actions";
 
 
 export default {
@@ -7,7 +8,9 @@ export default {
     component: UncontrolledOnOffSecret
 }
 
+const callBack = action('you set Light')
 
-export const onOffWithoutLight = () => <UncontrolledOnOffSecret light={false} setLight={() => {}}/>
-export const onOffWithLight = () => <UncontrolledOnOffSecret light={true} setLight={() => {}}/>
+
+export const onOffWithoutLight = () => <UncontrolledOnOffSecret light={false} setLight={callBack}/>
+export const onOffWithLight = () => <UncontrolledOnOffSecret light={true} setLight={callBack}/>
 
